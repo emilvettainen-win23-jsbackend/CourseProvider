@@ -20,7 +20,7 @@ public class GraphQL(ILogger<GraphQL> logger, IGraphQLRequestExecutor executor)
         }
         catch (Exception ex)
         {
-            _logger.LogError($"ERROR : GraphQl.Run() :: {ex.Message}");
+            _logger.LogError($"ERROR : GraphQL.Run() :: {ex.Message}");
             return new StatusCodeResult(500);
         }
     }

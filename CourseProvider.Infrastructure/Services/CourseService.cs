@@ -12,6 +12,8 @@ public interface ICourseService
 
     Task<Course> GetCourseByIdAsync(string id);
 
+    Task<IEnumerable<Course>> GetCoursesByIdsAsync(IEnumerable<string> ids);
+
     Task<IEnumerable<Course>> GetCoursesAsync();
 
     Task<IEnumerable<string?>> GetAllCategoriesAsync();
@@ -108,5 +110,12 @@ public class CourseService(IDbContextFactory<CourseDataContext> dbContextFactory
         var searchCoursesBySearch = await context.Courses.
             Where(x => x.CourseTitle.ToLower().Contains(searchQuery.ToLower()) || x.Author.FullName.ToLower().Contains(searchQuery.ToLower())).ToListAsync();
         return searchCoursesBySearch.Select(CourseFactory.Read);
+    }
+
+    public async Task<IEnumerable<Course>> GetCoursesByIdsAsync(IEnumerable<string> ids)
+    {
+        await using var context = _dbContextFactory.CreateDbContext();
+        var courses = await context.Courses.Where(x => ids.Contains(x.Id)).ToListAsync();
+        return courses.Select(CourseFactory.Read);
     }
 }
