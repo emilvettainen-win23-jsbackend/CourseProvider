@@ -15,7 +15,7 @@ public class CourseEntity
     public DateTime Created { get; set; }
     public DateTime LastUpdated { get; set; }
     public virtual RatingEntity Rating { get; set; } = null!;
-    public virtual List<AuthorEntity> Authors { get; set; } = [];
+    public virtual AuthorEntity Author { get; set; } = null!;
     public virtual IncludedEntity Included { get; set; } = null!;
     public virtual List<HighlightsEntity> Highlights { get; set; } = null!;
     public virtual List<ProgramDetailsEntity> Content { get; set; } = null!;

@@ -16,19 +16,19 @@ public static class CourseFactory
             CourseImageUrl = request.CourseImageUrl,
             IsBestseller = request.IsBestseller,
             Category = request.Category ?? "",
-            Authors = request.Authors?.Select(a => new AuthorEntity
+            Author = request.Author != null ? new AuthorEntity
             {
-                FullName = a.FullName,
-                Biography = a.Biography,
-                ProfileImageUrl = a.ProfileImageUrl,
-                SocialMedia = a.SocialMedia != null ? new SocialMediaEntity
+                FullName = request.Author.FullName,
+                Biography = request.Author.Biography,
+                ProfileImageUrl = request.Author.ProfileImageUrl,
+                SocialMedia = request.Author.SocialMedia != null ? new SocialMediaEntity
                 {
-                    YouTubeUrl = a.SocialMedia.YouTubeUrl,
-                    Subscribers = a.SocialMedia.Subscribers,
-                    FacebookUrl = a.SocialMedia.FacebookUrl,
-                    Followers = a.SocialMedia.Followers,
-                } : null!
-            }).ToList() ?? [],
+                    YouTubeUrl = request.Author.SocialMedia.YouTubeUrl,
+                    Subscribers = request.Author.SocialMedia.Subscribers,
+                    FacebookUrl = request.Author.SocialMedia.FacebookUrl,
+                    Followers = request.Author.SocialMedia.Followers
+                } : null
+            } : null!,
             Rating = request.Rating != null ? new RatingEntity
             {
                 InNumbers = request.Rating.InNumbers,
@@ -70,19 +70,19 @@ public static class CourseFactory
             CourseImageUrl = request.CourseImageUrl,
             IsBestseller = request.IsBestseller,
             Category = request.Category ?? "",
-            Authors = request.Authors?.Select(a => new AuthorEntity
+            Author = request.Author != null ? new AuthorEntity
             {
-                FullName = a.FullName,
-                Biography = a.Biography,
-                ProfileImageUrl = a.ProfileImageUrl,
-                SocialMedia = a.SocialMedia != null ? new SocialMediaEntity
+                FullName = request.Author.FullName,
+                Biography = request.Author.Biography,
+                ProfileImageUrl = request.Author.ProfileImageUrl,
+                SocialMedia = request.Author.SocialMedia != null ? new SocialMediaEntity
                 {
-                    YouTubeUrl = a.SocialMedia.YouTubeUrl,
-                    Subscribers = a.SocialMedia.Subscribers,
-                    FacebookUrl = a.SocialMedia.FacebookUrl,
-                    Followers = a.SocialMedia.Followers,
-                } : null!
-            }).ToList() ?? [],
+                    YouTubeUrl = request.Author.SocialMedia.YouTubeUrl,
+                    Subscribers = request.Author.SocialMedia.Subscribers,
+                    FacebookUrl = request.Author.SocialMedia.FacebookUrl,
+                    Followers = request.Author.SocialMedia.Followers
+                } : null
+            } : null!,
             Rating = request.Rating != null ? new RatingEntity
             {
                 InNumbers = request.Rating.InNumbers,
@@ -124,19 +124,19 @@ public static class CourseFactory
             CourseImageUrl = entity.CourseImageUrl,
             IsBestseller = entity.IsBestseller,
             Category = entity.Category ?? "",
-            Authors = entity.Authors?.Select(a => new Author
+            Author = entity.Author != null ? new Author
             {
-                FullName = a.FullName,
-                Biography = a.Biography,
-                ProfileImageUrl = a.ProfileImageUrl,
-                SocialMedia = a.SocialMedia != null ? new SocialMedia
+                FullName = entity.Author.FullName,
+                Biography = entity.Author.Biography,
+                ProfileImageUrl = entity.Author.ProfileImageUrl,
+                SocialMedia = entity.Author.SocialMedia != null ? new SocialMedia
                 {
-                    YouTubeUrl = a.SocialMedia.YouTubeUrl,
-                    Subscribers = a.SocialMedia.Subscribers,
-                    FacebookUrl = a.SocialMedia.FacebookUrl,
-                    Followers = a.SocialMedia.Followers,
+                    YouTubeUrl = entity.Author.SocialMedia.YouTubeUrl,
+                    Subscribers = entity.Author.SocialMedia.Subscribers,
+                    FacebookUrl = entity.Author.SocialMedia.FacebookUrl,
+                    Followers = entity.Author.SocialMedia.Followers
                 } : null
-            }).ToList() ?? new List<Author>(),
+            } : null!,
             Rating = entity.Rating != null ? new Rating
             {
                 InNumbers = entity.Rating.InNumbers,

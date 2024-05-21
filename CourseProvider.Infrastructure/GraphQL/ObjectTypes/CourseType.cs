@@ -16,7 +16,7 @@ public class CourseType : ObjectType<CourseEntity>
         descriptor.Field(c => c.Created).Type<NonNullType<DateTimeType>>();
         descriptor.Field(c => c.LastUpdated).Type<NonNullType<DateTimeType>>();
         descriptor.Field(c => c.Rating).Type<RatingType>();
-        descriptor.Field(c => c.Authors).Type<ListType<AuthorType>>();
+        descriptor.Field(c => c.Author).Type<AuthorType>();
         descriptor.Field(c => c.Included).Type<IncludedType>();
         descriptor.Field(c => c.Highlights).Type<ListType<HighlightType>>();
         descriptor.Field(c => c.Content).Type<ListType<ProgramDetailType>>();

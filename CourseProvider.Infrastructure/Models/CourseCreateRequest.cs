@@ -9,7 +9,7 @@ public class CourseCreateRequest
     public bool IsBestseller { get; set; }
     public string? Category { get; set; }
     public RatingRequest Rating { get; set; } = null!;
-    public List<AuthorRequest> Authors { get; set; } = null!;
+    public AuthorRequest Author { get; set; } = null!;
     public List<HighlightRequest> Highlights { get; set; } = null!;
     public List<ProgramDetailRequest> Content { get; set; } = null!;
     public PriceRequest Prices { get; set; } = null!;

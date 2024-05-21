@@ -20,7 +20,7 @@ public class CourseDataContext(DbContextOptions<CourseDataContext> options) : Db
         modelBuilder.Entity<CourseEntity>().ToContainer("Courses");
         modelBuilder.Entity<CourseEntity>().HasPartitionKey(x => x.Id);
         modelBuilder.Entity<CourseEntity>().OwnsOne(x => x.Rating);
-        modelBuilder.Entity<CourseEntity>().OwnsMany(x => x.Authors, a => a.OwnsOne(x => x.SocialMedia));
+        modelBuilder.Entity<CourseEntity>().OwnsOne(x => x.Author, a => a.OwnsOne(x => x.SocialMedia));
         modelBuilder.Entity<CourseEntity>().OwnsOne(x => x.Included);
         modelBuilder.Entity<CourseEntity>().OwnsMany(x => x.Highlights);
         modelBuilder.Entity<CourseEntity>().OwnsMany(x => x.Content);

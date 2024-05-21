@@ -105,20 +105,8 @@ public class CourseService(IDbContextFactory<CourseDataContext> dbContextFactory
     public async Task<IEnumerable<Course>> GetCoursesBySearchAsync(string searchQuery)
     {
         await using var context = _dbContextFactory.CreateDbContext();
-
-        //var searchCoursesBySearch = await context.Courses.Where(x => x.CourseTitle.ToLower().Contains(searchQuery.ToLower() || x.Authors.Any(x => x.FullName.Contains(searchQuery))
-        
-
-
-        //return searchCoursesBySearch.Select(CourseFactory.Read);
-
-
-        var coursesBySearch = await context.Courses
-    .Where(c => c.CourseTitle.Contains(searchQuery) ||
-                c.Authors.Any(a => a.FullName.Contains(searchQuery)))
-    .ToListAsync();
-
-
-        return coursesBySearch.Select(CourseFactory.Read);
+        var searchCoursesBySearch = await context.Courses.
+            Where(x => x.CourseTitle.ToLower().Contains(searchQuery.ToLower()) || x.Author.FullName.ToLower().Contains(searchQuery.ToLower())).ToListAsync();
+        return searchCoursesBySearch.Select(CourseFactory.Read);
     }
 }
