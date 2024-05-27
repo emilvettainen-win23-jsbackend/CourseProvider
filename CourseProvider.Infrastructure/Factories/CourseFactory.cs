@@ -94,10 +94,10 @@ public static class CourseFactory
                 Title = p.Title,
                 Description = p.Description
             }).ToList() ?? [],
-            Prices = request.Price != null ? new PriceEntity
+            Prices = request.Prices != null ? new PriceEntity
             {
-                OriginalPrice = request.Price.OriginalPrice,
-                DiscountPrice = request.Price.DiscountPrice
+                OriginalPrice = request.Prices.OriginalPrice,
+                DiscountPrice = request.Prices.DiscountPrice
             } : null!,
             Included = request.Included != null ? new IncludedEntity
             {
