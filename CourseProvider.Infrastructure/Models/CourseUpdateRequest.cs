@@ -13,7 +13,7 @@ public class CourseUpdateRequest
     public AuthorUpdateRequest Author { get; set; } = null!;
     public List<HighlightUpdateRequest> Highlights { get; set; } = null!;
     public List<ProgramDetailUpdateRequest> Content { get; set; } = null!;
-    public PriceUpdateRequest Price { get; set; } = null!;
+    public PriceUpdateRequest Prices { get; set; } = null!;
     public IncludedUpdateRequest Included { get; set; } = null!;
 }
 

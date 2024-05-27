@@ -15,6 +15,8 @@ var host = new HostBuilder()
         services.AddApplicationInsightsTelemetryWorkerService();
         services.ConfigureFunctionsApplicationInsights();
 
+       
+
         services.AddPooledDbContextFactory<CourseDataContext>(x => x.UseCosmos(Environment.GetEnvironmentVariable("AZURE_COSMOS_URI")!, Environment.GetEnvironmentVariable("AZURE_COSMOS_DBNAME")!).UseLazyLoadingProxies());
         services.AddScoped<ICourseService, CourseService>();
 
