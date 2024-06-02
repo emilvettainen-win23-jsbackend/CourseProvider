@@ -10,12 +10,12 @@ using Microsoft.Extensions.Hosting;
 
 var host = new HostBuilder()
     .ConfigureFunctionsWebApplication()
-    .ConfigureServices(services =>
+    .ConfigureServices(services  =>
     {
         services.AddApplicationInsightsTelemetryWorkerService();
         services.ConfigureFunctionsApplicationInsights();
 
-       
+
 
         services.AddPooledDbContextFactory<CourseDataContext>(x => x.UseCosmos(Environment.GetEnvironmentVariable("AZURE_COSMOS_URI")!, Environment.GetEnvironmentVariable("AZURE_COSMOS_DBNAME")!).UseLazyLoadingProxies());
         services.AddScoped<ICourseService, CourseService>();
@@ -24,6 +24,7 @@ var host = new HostBuilder()
                 .AddQueryType<CourseQuery>()
                 .AddMutationType<CourseMutation>()
                 .AddType<CourseType>();
+                
 
 
         var sp = services.BuildServiceProvider();
@@ -34,5 +35,7 @@ var host = new HostBuilder()
 
     })
     .Build();
+
+
 
 host.Run();

@@ -1,11 +1,13 @@
 ﻿using CourseProvider.Infrastructure.Models;
 using CourseProvider.Infrastructure.Services;
 
+
 namespace CourseProvider.Infrastructure.GraphQL.Mutations;
 
 public class CourseMutation(ICourseService courseService)
 {
     private readonly ICourseService _courseService = courseService;
+
 
     [GraphQLName("createCourse")]
     public async Task<Course> CreateCourseAsync(CourseCreateRequest input)
